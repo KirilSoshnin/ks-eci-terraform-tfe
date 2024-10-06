@@ -73,5 +73,25 @@ locals {
         },
       ]
     }
+
+    "ks-eci-product-service-example-go-prod" = {
+      description         = "Example automation for product service resources."
+      execution_mode      = "remote"
+      project_id          = module.project["ks-eci-project"].id
+      vcs_repo_identifier = "${var.github_organization_name}/ks-eci-terraform-product-service-example-go"
+
+      variables = [
+        {
+          category = "terraform"
+          key      = "cluster_name"
+          value    = "ks-eci-kirilsoshnin-prod"
+        },
+        {
+          category = "terraform"
+          key      = "environment"
+          value    = "prod"
+        },
+      ]
+    }
   }
 }
