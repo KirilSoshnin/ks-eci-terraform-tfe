@@ -17,5 +17,61 @@ locals {
       project_id          = module.project["ks-eci-project"].id
       vcs_repo_identifier = "${var.github_organization_name}/ks-eci-terraform-github"
     }
+
+    "ks-eci-aws-network" = {
+      description         = "Example automation for AWS network resources."
+      execution_mode      = "remote"
+      project_id          = module.project["ks-eci-project"].id
+      vcs_repo_identifier = "${var.github_organization_name}/ks-eci-terraform-aws-network"
+
+      variables = [
+        {
+          category = "terraform"
+          hcl      = true
+          key      = "azs"
+          value    = jsonencode(["us-west-2a", "us-west-2b"])
+        },
+        {
+          category = "terraform"
+          key      = "cidr"
+          value    = "10.0.0.0/16"
+        },
+        {
+          category = "terraform"
+          key      = "name"
+          value    = "ks-eci"
+        },
+      ]
+    }
+
+    "ks-eci-aws-cluster-prod" = {
+      description         = "Automation for AWS cluster resources."
+      execution_mode      = "remote"
+      project_id          = module.project["ks-eci-project"].id
+      vcs_repo_identifier = "${var.github_organization_name}/ks-eci-terraform-aws-cluster"
+
+      variables = [
+        {
+          category = "terraform"
+          key      = "domain"
+          value    = "kirilsoshnin.com"
+        },
+        {
+          category = "terraform"
+          key      = "environment"
+          value    = "prod"
+        },
+        {
+          category = "terraform"
+          key      = "name"
+          value    = "ks-eci-kirilsoshnin"
+        },
+        {
+          category = "terraform"
+          key      = "vpc_name"
+          value    = "ks-eci"
+        },
+      ]
+    }
   }
 }
