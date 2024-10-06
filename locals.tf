@@ -6,9 +6,10 @@ locals {
   }
   workspace = {
     "ks-eci-tfe" = {
-      description    = "Example description for the workspace"
-      execution_mode = "local"
-      project_id     = module.project["ks-eci-project"].id
+      description         = "Example description for the workspace"
+      execution_mode      = "remote"
+      project_id          = module.project["ks-eci-project"].id
+      vcs_repo_identifier = "KirilSoshnin/ks-eci-terraform-tfe"
     }
   }
-} 
+}
