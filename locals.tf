@@ -13,7 +13,7 @@ locals {
     }
     "ks-eci-github" = {
       description         = "Example automation workspace for GitHub resources"
-      execution_mode      = "local"
+      execution_mode      = "remote"
       project_id          = module.project["ks-eci-project"].id
       vcs_repo_identifier = "${var.github_organization_name}/ks-eci-terraform-github"
     }
